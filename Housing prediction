@@ -1,0 +1,63 @@
+HOUSING LINEAR REGRESSION  PRICING:
+
+[ ] import numpy as np
+import pandas as pd
+import os
+for dirname, _, filenames in os.walk('../input/usa-housing'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+[ ]import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+import warnings  
+warnings.filterwarnings('ignore')
+
+
+[ ]USAhousing = pd.read_csv('/kaggle/input/usa-housing/USA_Housing.csv')
+USAhousing.head()
+
+[ ]USAhousing.describe()
+
+[ ]USAhousing.info()
+
+[ ]USAhousing.columns
+
+[ ]X=USAhousing[['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of Rooms',
+       'Avg. Area Number of Bedrooms', 'Area Population']]
+y=USAhousing[['Price']]
+
+
+[ ]sns.pairplot(USAhousing)
+
+[ ]sns.heatmap(USAhousing.corr(),annot=True)
+
+[ ]sns.boxplot(USAhousing['Price'])
+
+
+TRAINING A LINEAR REGRESSION MODEL:
+
+[ ]X = dataset[['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of Rooms',
+               'Avg. Area Number of Bedrooms', 'Area Population']]
+y = dataset['Price']
+
+TRAIN TEST /SPLIT:
+
+[ ]from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=101)
+
+CREATING & TRAINING MODEL:
+[ ]from sklearn.linear_model import LinearRegression
+
+[ ]lm = LinearRegression()
+
+[ ]lm.fit(X_train,y_train)
+
+
+
+
+
+
+
+
